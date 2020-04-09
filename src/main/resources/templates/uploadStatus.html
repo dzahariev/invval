@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{fragments/layout :: layout (~{::body},'index')}">
+
+<body>
+	<br>
+	<a href='home'>Home</a>
+	<br>
+	<div th:if="${message}">
+		<p th:text="${message}"></p>
+	</div>
+	<div th:if="${valentriesresults}">
+		<br> ----------- РЕЗУЛТАТИ ----------- <br>
+		<ul th:each="entry : ${valentriesresults}">
+			<li th:text="${entry}"></li>
+		</ul>
+	</div>
+	<div th:if="${valentrieserrors}">
+		<br> ----------- ГРЕШКИ ----------- <br>
+		<ul th:each="entry : ${valentrieserrors}">
+			<li th:text="${entry}"></li>
+		</ul>
+	</div>
+	<div th:if="${valentrieswarnings}">
+		<br> ----------- ПРЕДУПРЕЖДЕНИЯ ----------- <br>
+		<ul th:each="entry : ${valentrieswarnings}">
+			<li th:text="${entry}"></li>
+		</ul>
+	</div>
+	<div th:if="${valentriesnotes}">
+		<br> ----------- БЕЛЕЖКИ ----------- <br>
+		<ul th:each="entry : ${valentriesnotes}">
+			<li th:text="${entry}"></li>
+		</ul>
+	</div>
+</body>
+</html>

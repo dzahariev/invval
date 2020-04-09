@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="~{fragments/layout :: layout (~{::body},'index')}">
+
+<body>
+
+	<form action='upload' method='post' enctype='multipart/form-data'>
+		Покажи:<br>
+		<input type='checkbox' name='severity' value='errors' checked>
+		Грешки<br> <input type='checkbox' name='severity'
+			value='warnings' checked> Предупреждения<br> <input
+			type='checkbox' name='severity' value='notes'> Бележки<br>
+		<input type='file' name='file' multiple='false' /> <input
+			type='submit' />
+	</form>
+	<br>
+	<br>
+	<form action='download/result.csv' method='post' enctype='multipart/form-data'>
+		Свали CSV файл:<br> <input type='file' name='file'
+			multiple='false' /> <input type='submit' />
+	</form>
+	<br>
+	<br>
+	<form action='download/result.xls' method='post' enctype='multipart/form-data'>
+		Свали XLS файл:<br> <input type='file' name='file'
+			multiple='false' /> <input type='submit' />
+	</form>
+</body>
+</html>
