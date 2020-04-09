@@ -6,8 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.pdfbox.pdmodel.PDDocument;
-import org.apache.pdfbox.util.PDFTextStripper;
-import org.apache.pdfbox.util.PDFTextStripperByArea;
+import org.apache.pdfbox.text.PDFTextStripper;
+import org.apache.pdfbox.text.PDFTextStripperByArea;
 
 import natku.model.Invoice;
 import natku.model.ValidationEntry;
@@ -50,7 +50,7 @@ public class ReadInvoices {
 		}
 
 		// Control check
-		int pdfPages = doc.getDocumentCatalog().getAllPages().size();
+		int pdfPages = doc.getDocumentCatalog().getPages().getCount();
 		if (invoices.size() != pdfPages) {
 			overallValidationEntries.add(ValidationEntry.createOverallError("From " + pdfPages + " pages only " + invoices.size() + " are parsed!"));
 		}
