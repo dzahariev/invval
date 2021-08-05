@@ -156,12 +156,13 @@ public class Invoice extends ModelBase {
 	}
 
 	public double getZadToCommunity(){
+		double fullZadToComm = 0;
 		for (TableItem currentItem : getTable().getItems()) {
 			if (TableItem.CODE_ZAD_TO_COMMUNITY.equals(currentItem.getCipher())) {
-				return currentItem.getlQuantity();
+				fullZadToComm += currentItem.getlQuantity();
 			}
 		}
-		return 0d;
+		return fullZadToComm;
 	}
 
 	public boolean hasElEnergiaPeriodEdCena(){
@@ -174,12 +175,13 @@ public class Invoice extends ModelBase {
 	}
 
 	public double getElEnergiaPeriodValue(){
+		double elEnergiaFullValue = 0;
 		for (TableItem currentItem : getTable().getItems()) {
 			if (TableItem.CODE_ELECTRICITY_FOR_PERIOD.equals(currentItem.getCipher())) {
-				return currentItem.getlValue();
+				elEnergiaFullValue += currentItem.getlValue();
 			}
 		}
-		return 0d;
+		return elEnergiaFullValue;
 	}
 
 	public double getElEnergiaPeriodEdCena(){
