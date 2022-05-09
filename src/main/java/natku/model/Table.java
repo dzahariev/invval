@@ -63,7 +63,7 @@ public class Table extends ModelBase {
 				// Code
 				tableItemSection.append(lines[i].trim() + " ");
 				for (int j = i + 1; j < lines.length; j++) {
-					if (!(lines[j].startsWith(TableItem.CODE_ELECTRICITY_FOR_PERIOD) || (lines[j].startsWith(TableItem.CODE_ACIZ) && lines[j].charAt(1) == ' ') || lines[j].startsWith(TableItem.CODE_NET_TAX_AND_SERVICES_1) || lines[j].startsWith(TableItem.CODE_NET_TAX_AND_SERVICES_2) || lines[j].startsWith(TableItem.CODE_NET_TAX_AND_SERVICES_3) || lines[j].startsWith(TableItem.CODE_ZAD_TO_COMMUNITY))) {
+					if (!(lines[j].startsWith(TableItem.CODE_ELECTRICITY_FOR_PERIOD) || (lines[j].startsWith(TableItem.CODE_ACIZ) && (lines[j].length() > 2 && lines[j].charAt(1) == ' ')) || lines[j].startsWith(TableItem.CODE_NET_TAX_AND_SERVICES_1) || lines[j].startsWith(TableItem.CODE_NET_TAX_AND_SERVICES_2) || lines[j].startsWith(TableItem.CODE_NET_TAX_AND_SERVICES_3) || lines[j].startsWith(TableItem.CODE_ZAD_TO_COMMUNITY))) {
 						tableItemSection.append(lines[j].trim() + " ");
 					} else {
 						break;
@@ -97,7 +97,7 @@ public class Table extends ModelBase {
 				//System.out.println(currentTableItem);
 				tableItems.add(currentTableItem);
 			}
-			if (lines[i].startsWith(TableItem.CODE_ACIZ) && lines[i].charAt(1) == ' ') {
+			if (lines[i].startsWith(TableItem.CODE_ACIZ) && lines[i].length() > 2 && lines[i].charAt(1) == ' ') {
 				TableItem currentTableItem = TableItem.parseTableItem(lines[i].trim(), forInvoice);
 				tableItems.add(currentTableItem);
 			}
