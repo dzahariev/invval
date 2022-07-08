@@ -95,9 +95,10 @@ public class Main {
 				double zadToCom = invoice.getZadToCommunity();
 				double netTaxAndServices = invoice.getNetTaxAndServices();
 				double еlEnergiaPeriodEdCena = invoice.getElEnergiaPeriodEdCena();
+				double еlEnergiaPeriodQuantity = invoice.getElEnergiaPeriodlQuantity();
 				double еlEnergiaPeriodValue = invoice.getElEnergiaPeriodValue();
 				opw.println(recieverName + "," + idNo + "," + zadToCom + "," + netTaxAndServices + ","
-						+ еlEnergiaPeriodEdCena + "," + еlEnergiaPeriodValue);
+						+ еlEnergiaPeriodEdCena + "," + еlEnergiaPeriodQuantity + "," + еlEnergiaPeriodValue);
 			}
 			opw.flush();
 			opw.close();
@@ -114,7 +115,8 @@ public class Main {
 			rowhead.createCell(2).setCellValue("Задължения към обществото");
 			rowhead.createCell(3).setCellValue("Мрежови такси и услуги");
 			rowhead.createCell(4).setCellValue("Ел Енергия за периода Ед. Цена");
-			rowhead.createCell(5).setCellValue("Ел Енергия за периода Стойност");
+			rowhead.createCell(5).setCellValue("Ел Енергия за периода Количество");
+			rowhead.createCell(6).setCellValue("Ел Енергия за периода Стойност");
 
 			int count = 1;
 			for (Invoice invoice : parseResult.getInstance().getInvoices()) {
@@ -123,6 +125,7 @@ public class Main {
 				double zadToCom = invoice.getZadToCommunity();
 				double netTaxAndServices = invoice.getNetTaxAndServices();
 				double еlEnergiaPeriodEdCena = invoice.getElEnergiaPeriodEdCena();
+				double еlEnergiaPeriodQuantity = invoice.getElEnergiaPeriodlQuantity();
 				double еlEnergiaPeriodValue = invoice.getElEnergiaPeriodValue();
 
 				HSSFRow row = sheet.createRow(count++);
@@ -131,7 +134,8 @@ public class Main {
 				row.createCell(2).setCellValue(zadToCom);
 				row.createCell(3).setCellValue(netTaxAndServices);
 				row.createCell(4).setCellValue(еlEnergiaPeriodEdCena);
-				row.createCell(5).setCellValue(еlEnergiaPeriodValue);
+				row.createCell(5).setCellValue(еlEnergiaPeriodQuantity);
+				row.createCell(6).setCellValue(еlEnergiaPeriodValue);
 			}
 			try {
 				workbook.write(out);

@@ -80,6 +80,14 @@ public class ReadInvoices {
 			overallZadToCommunity = (double)Math.round(overallZadToCommunity * 1000d) / 1000d;
 			overallValidationEntries.add(ValidationEntry.createOverallResult("Общо количество при <Задължения към обществото>:" + overallZadToCommunity));
 
+			// Sum all entries for <Количество> 
+			double overallQuantity = 0.0;
+			for (Invoice currentInvoice : invoices) {
+				overallQuantity += currentInvoice.getElEnergiaPeriodlQuantity();
+			}
+			overallQuantity = (double)Math.round(overallQuantity * 1000d) / 1000d;
+			overallValidationEntries.add(ValidationEntry.createOverallResult("Общо количество при <Ел енергия за периода>:" + overallQuantity));
+			
 			// Sum all entries for <Мрежови такси и услуги> 
 			double overallNetTaxeAndServices = 0.0;
 			for (Invoice currentInvoice : invoices) {

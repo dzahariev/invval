@@ -174,6 +174,16 @@ public class Invoice extends ModelBase {
 		return false;
 	}
 
+	public double getElEnergiaPeriodlQuantity(){
+		double elEnergialQuantity = 0;
+		for (TableItem currentItem : getTable().getItems()) {
+			if (TableItem.CODE_ELECTRICITY_FOR_PERIOD.equals(currentItem.getCipher())) {
+				elEnergialQuantity += currentItem.getlQuantity();
+			}
+		}
+		return elEnergialQuantity;
+	}
+
 	public double getElEnergiaPeriodValue(){
 		double elEnergiaFullValue = 0;
 		for (TableItem currentItem : getTable().getItems()) {
