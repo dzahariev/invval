@@ -3,6 +3,8 @@ package natku.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import natku.log.Log;
+
 public class Table extends ModelBase {
 	private static final String DATA_WUZNIKWANE_DAN_SUBITIE = "Дата на възникване на данъчното събитие:";
 	private static final String SUMA_ZA_PLASHTANE_LV = "Сума за плащане в лева:";
@@ -18,9 +20,9 @@ public class Table extends ModelBase {
 	private Invoice forInvoice;
 
 	public static Table parseTable(String tableSection, Invoice forInvoice) {
-		// System.out.println("------------------------START--------------------");
-		// System.out.println(tableSection);
-		// System.out.println("------------------------END----------------------");
+		Log.println("------------------------START--------------------");
+		Log.println(tableSection);
+		Log.println("------------------------END----------------------");
 
 		String[] lines = tableSection.split(System.lineSeparator());
 		String withWords = parseFollowItem(tableSection, SLOVOM, "WithWords");
@@ -53,9 +55,9 @@ public class Table extends ModelBase {
 			}
 		}
 
-//		System.out.println("------------------------START--------------------");
-//		System.out.println(currentSection);
-//		System.out.println("------------------------END----------------------");
+		Log.println("------------------------START--------------------");
+		Log.println(currentSection);
+		Log.println("------------------------END----------------------");
 		lines = currentSection.toString().split(System.lineSeparator());
 		for (int i = 0; i < lines.length; i++) {
 			if (lines[i].startsWith(TableItem.CODE_ELECTRICITY_FOR_PERIOD)) {
@@ -70,7 +72,7 @@ public class Table extends ModelBase {
 					}
 				}
 
-				//System.out.println("tableItemSection=" + tableItemSection);
+				Log.println("tableItemSection=" + tableItemSection);
 				String[] elements = tableItemSection.toString().split(" ");
 				StringBuffer name = new StringBuffer();
 				for (int k = 1; k < elements.length - (tableItemSection.indexOf("MWh") > 0 ? 6 : 5); k++) {
@@ -78,8 +80,8 @@ public class Table extends ModelBase {
 				}
 				String sName = name.toString().substring(0, name.length() - "_space_".length());
 				
-				//System.out.println("sName="+sName);
-				//System.out.println("tableItemSection=" + tableItemSection);
+				Log.println("sName="+sName);
+				Log.println("tableItemSection=" + tableItemSection);
 				
 				String[] elements2 = tableItemSection.toString().split(" ");
 				StringBuffer tableItemSection2 = new StringBuffer();
@@ -91,10 +93,10 @@ public class Table extends ModelBase {
 					tableItemSection2.append(elements[k].trim() + " ");
 				}
 
-				//System.out.println("tableItemSection2="+tableItemSection2);
+				Log.println("tableItemSection2="+tableItemSection2);
 				
 				TableItem currentTableItem = TableItem.parseTableItem(tableItemSection2.toString(), forInvoice);
-				//System.out.println(currentTableItem);
+				Log.println(currentTableItem);
 				tableItems.add(currentTableItem);
 			}
 			if (lines[i].startsWith(TableItem.CODE_ACIZ) && lines[i].length() > 2 && lines[i].charAt(1) == ' ') {

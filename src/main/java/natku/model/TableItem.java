@@ -1,5 +1,7 @@
 package natku.model;
 
+import natku.log.Log;
+
 public class TableItem extends ModelBase {
 	private String cipher;
 	private String name;
@@ -24,9 +26,9 @@ public class TableItem extends ModelBase {
 	public static String CODE_NET_TAX_AND_SERVICES_3 = "190000";
 
 	public static TableItem parseTableItem(String tableItemSection, Invoice forInvoice) {
-		// System.out.println("------------------------START--------------------");
-		// System.out.println(tableItemSection);
-		// System.out.println("------------------------END----------------------");
+		Log.println("------------------------START--------------------");
+		Log.println(tableItemSection);
+		Log.println("------------------------END----------------------");
 		String[] elements = tableItemSection.split(" ");
 		String cipher = elements[0].trim();
 		String name = "";

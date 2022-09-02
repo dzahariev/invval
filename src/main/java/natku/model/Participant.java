@@ -1,5 +1,7 @@
 package natku.model;
 
+import natku.log.Log;
+
 public class Participant extends ModelBase {
 	private static final String PREFIX_ACCOUNT = "Сметка:";
 	private static final String PREFIX_CODE = "Код:";
@@ -22,9 +24,9 @@ public class Participant extends ModelBase {
 	private Invoice forInvoice;
 
 	public static Participant parsePerticipant(String participantSection, Invoice forInvoice) {
-		// System.out.println("------------------------START--------------------");
-		// System.out.println(participantSection);
-		// System.out.println("------------------------END----------------------");
+		Log.println("------------------------START--------------------");
+		Log.println(participantSection);
+		Log.println("------------------------END----------------------");
 
 		String name = parseName(participantSection.toString());
 		String city = parseCity(participantSection.toString());

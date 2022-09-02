@@ -9,6 +9,7 @@ import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.text.PDFTextStripper;
 import org.apache.pdfbox.text.PDFTextStripperByArea;
 
+import natku.log.Log;
 import natku.model.Invoice;
 import natku.model.ValidationEntry;
 
@@ -58,6 +59,7 @@ public class ReadInvoices {
 			// Process and collect validaiton entries for invoices consistency
 			// here...
 			for (Invoice invoice : invoices) {
+				Log.println(invoice.getPageNumber());
 				List<ValidationEntry> invoiceValidationEntries = invoice.getValidationEntries();
 				overallValidationEntries.addAll(invoiceValidationEntries);
 			}

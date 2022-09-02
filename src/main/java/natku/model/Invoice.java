@@ -1,5 +1,7 @@
 package natku.model;
 
+import natku.log.Log;
+
 public class Invoice extends ModelBase {
 	private int pageNumber = -1;
 	private String number;
@@ -9,9 +11,9 @@ public class Invoice extends ModelBase {
 	private Table table;
 
 	public static Invoice parseInvoiceFromPage(int pageNumber, String page) {
-		// System.out.println("------------------------START--------------------");
-		// System.out.println(page);
-		// System.out.println("------------------------END----------------------");
+		Log.println("------------------------START--------------------");
+		Log.println(page);
+		Log.println("------------------------END----------------------");
 		String[] lines = page.split(System.lineSeparator());
 		String invoiceNumber = null;
 		String forDate = null;

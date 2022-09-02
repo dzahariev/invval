@@ -63,15 +63,15 @@ public abstract class ModelBase {
 		BigDecimal bb = new BigDecimal(String.valueOf(b));
 		BigDecimal x = aa.multiply(bb);
 		String str = x.toString(); 
-		int wholeMaximized = Integer.parseInt(str.substring(0, str.indexOf('.')));
+		long wholeMaximized = Long.parseLong(str.substring(0, str.indexOf('.')));
 		String strWholeMaximized = String.valueOf(wholeMaximized);
 		String strLastDigit = strWholeMaximized.substring(strWholeMaximized.length()-1);
 		String strNonLastDigit = strWholeMaximized.substring(0, strWholeMaximized.length()-1);
 		if ("".equals(strNonLastDigit)) {
 			strNonLastDigit = "0";
 		}
-		int nonLastDigit = Integer.parseInt(strNonLastDigit);
-		int lastDigit = Integer.parseInt(strLastDigit);
+		long nonLastDigit = Long.parseLong(strNonLastDigit);
+		long lastDigit = Long.parseLong(strLastDigit);
 		if (lastDigit >= 5) {
 			nonLastDigit++;
 		}
