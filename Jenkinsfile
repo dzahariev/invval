@@ -3,7 +3,7 @@ pipeline {
     agent any
     tools {
         jdk 'JDK11'
-        mvn 'mvn3.9.0'
+        maven 'mvn3.9.0'
     }
     stages {
         stage("build") {
