@@ -7,7 +7,7 @@ import natku.log.Log;
 
 public class Table extends ModelBase {
 	private static final String DATA_WUZNIKWANE_DAN_SUBITIE = "Дата на възникване на данъчното събитие:";
-	private static final String SUMA_ZA_PLASHTANE_LV = "Сума за плащане в лева:";
+	private static final String SUMA_ZA_PLASHTANE_LV = "Сума за плащане:";
 	private static final String SLOVOM = "Словом:";
 	private List<TableItem> items;
 	private String withWords;

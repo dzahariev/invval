@@ -22,7 +22,6 @@ import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.nio.charset.StandardCharsets;
 
-import javax.servlet.http.HttpServletRequest;
 
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
@@ -42,6 +41,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import jakarta.servlet.http.HttpServletRequest;
 import natku.model.Invoice;
 import natku.model.ValidationEntry;
 
@@ -94,11 +94,11 @@ public class Main {
 				String idNo = invoice.getReciever().getIdNO();
 				double zadToCom = invoice.getZadToCommunity();
 				double netTaxAndServices = invoice.getNetTaxAndServices();
-				double еlEnergiaPeriodEdCena = invoice.getElEnergiaPeriodEdCena();
-				double еlEnergiaPeriodQuantity = invoice.getElEnergiaPeriodlQuantity();
-				double еlEnergiaPeriodValue = invoice.getElEnergiaPeriodValue();
+				double elEnergiaPeriodEdCena = invoice.getElEnergiaPeriodEdCena();
+				double elEnergiaPeriodQuantity = invoice.getElEnergiaPeriodlQuantity();
+				double elEnergiaPeriodValue = invoice.getElEnergiaPeriodValue();
 				opw.println(recieverName + "," + idNo + "," + zadToCom + "," + netTaxAndServices + ","
-						+ еlEnergiaPeriodEdCena + "," + еlEnergiaPeriodQuantity + "," + еlEnergiaPeriodValue);
+						+ elEnergiaPeriodEdCena + "," + elEnergiaPeriodQuantity + "," + elEnergiaPeriodValue);
 			}
 			opw.flush();
 			opw.close();
@@ -124,18 +124,18 @@ public class Main {
 				String idNo = invoice.getReciever().getIdNO();
 				double zadToCom = invoice.getZadToCommunity();
 				double netTaxAndServices = invoice.getNetTaxAndServices();
-				double еlEnergiaPeriodEdCena = invoice.getElEnergiaPeriodEdCena();
-				double еlEnergiaPeriodQuantity = invoice.getElEnergiaPeriodlQuantity();
-				double еlEnergiaPeriodValue = invoice.getElEnergiaPeriodValue();
+				double elEnergiaPeriodEdCena = invoice.getElEnergiaPeriodEdCena();
+				double elEnergiaPeriodQuantity = invoice.getElEnergiaPeriodlQuantity();
+				double elEnergiaPeriodValue = invoice.getElEnergiaPeriodValue();
 
 				HSSFRow row = sheet.createRow(count++);
 				row.createCell(0).setCellValue(recieverName);
 				row.createCell(1).setCellValue(idNo);
 				row.createCell(2).setCellValue(zadToCom);
 				row.createCell(3).setCellValue(netTaxAndServices);
-				row.createCell(4).setCellValue(еlEnergiaPeriodEdCena);
-				row.createCell(5).setCellValue(еlEnergiaPeriodQuantity);
-				row.createCell(6).setCellValue(еlEnergiaPeriodValue);
+				row.createCell(4).setCellValue(elEnergiaPeriodEdCena);
+				row.createCell(5).setCellValue(elEnergiaPeriodQuantity);
+				row.createCell(6).setCellValue(elEnergiaPeriodValue);
 			}
 			try {
 				workbook.write(out);
