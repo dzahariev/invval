@@ -1,8 +1,8 @@
 pipeline {
-    // install JDK 8 and Maven on Jenkins node
+    // install JDK 17 and Maven on Jenkins node
     agent any
     tools {
-        jdk 'JDK11'
+        jdk 'JDK17'
         maven 'mvn3.9.0'
     }
     stages {

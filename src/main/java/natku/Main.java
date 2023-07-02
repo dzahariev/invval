@@ -22,7 +22,6 @@ import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.nio.charset.StandardCharsets;
 
-
 import org.apache.poi.hssf.usermodel.HSSFRow;
 import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
@@ -33,7 +32,10 @@ import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -53,19 +55,13 @@ public class Main {
 		SpringApplication.run(Main.class, args);
 	}
 
-	@RequestMapping("/")
-	String index() {
+	@RequestMapping(value = { "", "/", "/home", "/download", "/upload" }, method = RequestMethod.GET)
+	String index(Model model, @AuthenticationPrincipal OAuth2User user) {
+		String name = user.getAttribute("name");
+		model.addAttribute("name", name);
+		String email = user.getAttribute("email");
+		model.addAttribute("email", email);
 		return "index";
-	}
-
-	@RequestMapping("/home")
-	String home() {
-		return "index";
-	}
-
-	@RequestMapping(value = "/download", method = RequestMethod.GET)
-	String downloadxlsGet() {
-		return "backtoindex";
 	}
 
 	@RequestMapping(value = "/download/{fileName:.+}", method = RequestMethod.POST)
@@ -151,15 +147,9 @@ public class Main {
 
 	}
 
-	@RequestMapping(value = "/upload", method = RequestMethod.GET)
-	String uploadGet() {
-		return "backtoindex";
-	}
-
 	@RequestMapping(value = "/upload", method = RequestMethod.POST)
 	String uploadPOST(@RequestParam("severity") String[] severities, @RequestParam("file") MultipartFile file,
-			RedirectAttributes redirectAttributes) {
-
+			RedirectAttributes redirectAttributes, Model model, @AuthenticationPrincipal OAuth2User user) {
 		if (file.isEmpty()) {
 			redirectAttributes.addFlashAttribute("message", "Please select a file to upload");
 			return "redirect:/uploadStatus";
@@ -201,17 +191,17 @@ public class Main {
 	private boolean hasSeverity(int severity, String[] providedSeverities) {
 		String severityName = "";
 		switch (severity) {
-		case 0: // SEVERITY_WARNING = 0;
-			severityName = "warnings";
-			break;
-		case 1: // SEVERITY_ERROR = 1;
-			severityName = "errors";
-			break;
-		case 2: // SEVERITY_NOTE = 2;
-			severityName = "notes";
-			break;
-		default:
-			break;
+			case 0: // SEVERITY_WARNING = 0;
+				severityName = "warnings";
+				break;
+			case 1: // SEVERITY_ERROR = 1;
+				severityName = "errors";
+				break;
+			case 2: // SEVERITY_NOTE = 2;
+				severityName = "notes";
+				break;
+			default:
+				break;
 		}
 		for (int i = 0; i < providedSeverities.length; i++) {
 			if (providedSeverities[i].equals(severityName)) {
