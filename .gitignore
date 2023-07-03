@@ -4,3 +4,4 @@ target/
 .project
 .settings/
 docs/
+.DS_Store
