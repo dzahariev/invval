@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.example</groupId>
 	<artifactId>invval</artifactId>
-	<version>2.0</version>
+	<version>2.1</version>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
@@ -16,9 +16,6 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<webjars-bootstrap.version>5.3.2</webjars-bootstrap.version>
-		<webjars-jquery-ui.version>1.13.2</webjars-jquery-ui.version>
-		<webjars-jquery.version>3.7.1</webjars-jquery.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -51,12 +48,12 @@
 		<dependency>
 			<groupId>org.webjars</groupId>
 			<artifactId>jquery</artifactId>
-			<version>${webjars-jquery.version}</version>
+			<version>3.7.1</version>
 		</dependency>
 		<dependency>
 			<groupId>org.webjars</groupId>
 			<artifactId>jquery-ui</artifactId>
-			<version>${webjars-jquery-ui.version}</version>
+			<version>1.13.2</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.pdfbox</groupId>
@@ -71,7 +68,7 @@
 		<dependency>
 			<groupId>org.webjars</groupId>
 			<artifactId>bootstrap</artifactId>
-			<version>${webjars-bootstrap.version}</version>
+			<version>5.3.2</version>
 		</dependency>
 		<dependency>
 			<groupId>org.webjars</groupId>
