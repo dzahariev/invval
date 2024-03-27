@@ -1,9 +1,15 @@
 {
-    "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-    "extends": [
-      "config:base",
-      "schedule:daily",
-      ":disableMajorUpdates",
-      ":dependencyDashboard"
-    ]
-  }
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:base",
+    "schedule:daily",
+    "docker:enableMajor",
+    "docker:pinDigests",
+    "default:automergeDigest",
+    ":dependencyDashboard"
+  ],
+  "automergeType": "pr",
+  "prCreation": "immediate",
+  "prHourlyLimit": 0,
+  "ignoreTests": true
+}
