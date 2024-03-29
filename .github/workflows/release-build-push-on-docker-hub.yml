@@ -4,9 +4,6 @@ on:
   release:
     types: [published]
 
-env:
-  IMAGE_NAME: ${{ github.repository }}
-
 jobs:
   push_to_registry:
     name: Push Docker image to Docker Hub
@@ -31,7 +28,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: dzahariev/invval
+          images: ${{ github.repository }}
 
       - name: Build and push
         uses: docker/build-push-action@v5
