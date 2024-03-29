@@ -70,7 +70,7 @@ public class Main {
 		Resource resource = null;
 		ParseResult parseResult = null;
 		try {
-			parseResult = new ParseResult(file.getInputStream());
+			parseResult = new ParseResult(file.getBytes());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -158,7 +158,7 @@ public class Main {
 		try {
 
 			// Get the file and save it somewhere
-			ParseResult parseResult = new ParseResult(file.getInputStream());
+			ParseResult parseResult = new ParseResult(file.getBytes());
 			redirectAttributes.addFlashAttribute("valentriesresults",
 					parseResult.getValEntries(ValidationEntry.SEVERITY_RESULT));
 			if (hasSeverity(ValidationEntry.SEVERITY_ERROR, severities)) {

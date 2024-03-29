@@ -1,7 +1,6 @@
 package natku;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,7 +10,7 @@ public class ParseResult {
 	private List<ValidationEntry> validationEntriesForInstance;
 	private ReadInvoices instance; 
 
-	public ParseResult(InputStream fileContent) throws IOException {
+	public ParseResult(byte[] fileContent) throws IOException {
 		this.instance = new ReadInvoices();
 		this.validationEntriesForInstance = instance.parseInvoices(fileContent);
 	}

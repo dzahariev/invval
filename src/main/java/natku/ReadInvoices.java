@@ -1,10 +1,10 @@
 package natku;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.pdfbox.Loader;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.text.PDFTextStripper;
 import org.apache.pdfbox.text.PDFTextStripperByArea;
@@ -20,8 +20,8 @@ public class ReadInvoices {
 		return invoices;
 	}
 
-	public List<ValidationEntry> parseInvoices(InputStream stream) throws IOException {
-		PDDocument doc = PDDocument.load(stream);
+	public List<ValidationEntry> parseInvoices(byte[] stream) throws IOException {
+		PDDocument doc = Loader.loadPDF(stream);
 		List<ValidationEntry> overallValidationEntries = new ArrayList<ValidationEntry>();
 
 		PDFTextStripperByArea stripper = new PDFTextStripperByArea();
