@@ -1,4 +1,4 @@
-FROM maven:3.9.6-eclipse-temurin-21@sha256:b194dc4512295335cd429a58447b932da6fd89a88015ae3329c946e3905f46f5 AS builder
+FROM maven:3.9.6-eclipse-temurin-21@sha256:ab121ec86f0d98167008dda8637897e1c8e55d8af4ba6ff461ab0d450406b660 AS builder
 COPY . .
 RUN VERSION=$(mvn org.apache.maven.plugins:maven-help-plugin:3.4.0:evaluate -Dexpression=project.version -DforceStdout -q) && mvn clean install && mkdir /app && mv ./target/invval-$VERSION.jar /app/invval.jar
 
