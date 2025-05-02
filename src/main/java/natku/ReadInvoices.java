@@ -47,7 +47,9 @@ public class ReadInvoices {
 		// Process last invoice
 		if (currentPage.length() > 0) {
 			Invoice currentInvoice = Invoice.parseInvoiceFromPage(pageNumber, currentPage.toString());
-			invoices.add(currentInvoice);
+			if (currentInvoice.getTable() != null) {
+				invoices.add(currentInvoice);
+			}
 		}
 
 		// Control check
