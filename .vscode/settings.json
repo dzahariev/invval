@@ -1,9 +1,8 @@
 {
-    "java.configuration.updateBuildConfiguration": "automatic",
     "java.configuration.runtimes": [
         {
-            "name": "JavaSE-17",
-            "path": "/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home",
+            "name": "JavaSE-25",
+            "path": "/Library/Java/JavaVirtualMachines/zulu-25.jdk",
             "default": true
         },
     ],
