@@ -8,7 +8,8 @@
             "console": "internalConsole",
             "mainClass": "natku.Main",
             "projectName": "invval",
-            "args": ""
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
         }
     ]
 }
